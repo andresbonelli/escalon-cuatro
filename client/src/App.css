@@ -1,0 +1,174 @@
+body {
+  background: rgb(190,214,27);
+  background: radial-gradient(rgba(190,214,27,1) 15%, rgba(0,94,0,1) 100%); 
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 90vh;
+  min-height: 400px;
+}
+
+h2 {
+  font-size: 2rem; 
+  font-weight: bold;
+  
+  margin-bottom: 10px;
+}
+
+.definition {
+  font-size: 1.6rem; 
+  font-weight: bold;
+  margin-bottom: 20px;
+  width: 50vw;
+}
+
+.score {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  align-items: start;
+  justify-content: start;
+}
+
+input[type="text"] {
+  width: 20rem;
+  margin: 20px;
+  padding: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* button */
+.btn-primary {
+  background-color: #ffffff;
+  color: #181818;
+  width: 8rem;
+  margin: 20px;
+  padding: 10px 25px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.btn-primary:hover {
+  background-color: #ceffbb;
+}
+
+.btn-primary:disabled {
+  background-color: #ccc; /* Change to your desired disabled background color */
+  color: #999; /* Change to your desired disabled text color */
+  cursor: not-allowed; /* Change to your desired cursor style */
+}
+.score {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.score-negative {
+  color: #bf0000;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.result {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* timer bar */
+.timer-bar {
+  height: 10px; 
+  background-color: #bf0000; 
+  width: 20rem; 
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timer-bar::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color:	#bf0000;
+  width: 100%;
+  transition: width 1s linear;
+}
+
+/* Loader */
+.spinner {
+  animation: rotator 1.4s linear infinite;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@keyframes colors {
+  0% {
+    stroke: #4285f4;
+  }
+  25% {
+    stroke: #de3e35;
+  }
+  50% {
+    stroke: #f7c223;
+  }
+  75% {
+    stroke: #1b9a59;
+  }
+  100% {
+    stroke: #4285f4;
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg);
+  }
+}
+ 
