@@ -11,8 +11,8 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [remainingTime, setRemainingTime] = useState(60); // 60 seconds
   const [timerRunning, setTimerRunning] =useState(false);
-  const socket = io('http://localhost:5000');
   
+  const socket = io('http://localhost:5000');
 
   useEffect(() => {
     socket.connect();
@@ -55,10 +55,11 @@ export default function App() {
   }, [definition, remainingTime, timerRunning]);
 
   async function getWord() {
+    
     setIsLoading(true);
     socket.emit('get_word');
 
-    socket.on('word_data', async (response) => {
+    socket.on('word_data', (response) => {
       console.log('Game Status:', response);
 
       if (response.data.definition !== null) {
@@ -87,7 +88,6 @@ export default function App() {
     }
     setRemainingTime(60);
     setTimerRunning(false);
-    console.log(`score: ${score}`);
   }
 
   return (
