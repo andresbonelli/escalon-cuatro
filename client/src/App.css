@@ -15,6 +15,64 @@ body {
   text-align: center;
 }
 
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #181818; 
+  opacity: 90%;
+  padding: 7px; 
+  box-shadow: 0px 0px 100px 50px rgb(0, 60, 0);
+  display: flex;
+  justify-content: space-between; /* To push the logo to the left */
+  align-items: center; 
+  z-index: 100; 
+}
+
+
+.logo-container {
+  max-width: 13rem;
+  margin-left: 15px;
+  text-align: center;
+}
+
+
+.logo {
+  max-width: 13rem;
+  display: block; /* Remove any unwanted spacing */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    .logo-container {
+      max-width: 300px;
+    }
+    .logo {
+      max-width: 300px;
+    }
+  }
+
+.copyright {
+  color: rgb(0, 160, 0);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 4rex;
+}
+
+A:link {text-decoration: none; color: rgb(0, 160, 0);}
+A:visited {text-decoration: none; color: rgb(0, 160, 0);}
+
+
+@media (max-width: 768px) {
+  /* Adjust styles for smaller screens, if necessary */
+  .logo-container {
+      margin-left: 10px;
+  }
+
+  .logo {
+      max-width: 80px;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -81,9 +139,9 @@ input[type="text"] {
 }
 
 .btn-primary:disabled {
-  background-color: #ccc; /* Change to your desired disabled background color */
-  color: #999; /* Change to your desired disabled text color */
-  cursor: not-allowed; /* Change to your desired cursor style */
+  background-color: #ccc; 
+  color: #999; 
+  cursor: not-allowed; 
 }
 .score {
   font-size: 1.5rem;

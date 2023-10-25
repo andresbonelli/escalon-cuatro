@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import Loader from './Loader.jsx';
+import Header from './Header.jsx';
 
 export default function App() {
   const [word, setWord] = useState('');
@@ -9,7 +10,7 @@ export default function App() {
   const [result, setResult] = useState('');
   const [score, setScore] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [remainingTime, setRemainingTime] = useState(60); // 60 seconds
+  const [remainingTime, setRemainingTime] = useState(60); // 60 seconds timer
   const [timerRunning, setTimerRunning] =useState(false);
   
   const socket = io('http://localhost:5000');
@@ -21,7 +22,7 @@ export default function App() {
       getWord();
     });
     return () => {
-      socket.disconnect();
+      socket.off('connect');
     }
   }, []);
 
@@ -73,6 +74,8 @@ export default function App() {
         setDefinition('');
         setGuess('');
         setResult("Trulé. Buscá de nuevo, porfis.");
+        socket.off('connect');
+        socket.off('word_data');
       }
       setIsLoading(false);
     });
@@ -92,6 +95,7 @@ export default function App() {
 
   return (
     <div className='container'>
+      <Header/>
       <p className={score < 0 ? 'score-negative' : 'score'}>
         {score < 0 ? `✘ ${score}` : `✔ ${score}`}
       </p>
@@ -102,6 +106,8 @@ export default function App() {
         <>
           <p className="definition">{definition}</p>
           <input
+            name='guess'
+            id='guess'
             type="text"
             placeholder="Adivina la palabra"
             value={guess}
