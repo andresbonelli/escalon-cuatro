@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import io from 'socket.io-client';
 import Loader from './Loader.jsx';
 import Header from './Header.jsx';
+import './App.css'
 
 export default function App() {
   const [word, setWord] = useState('');
@@ -13,17 +13,10 @@ export default function App() {
   const [remainingTime, setRemainingTime] = useState(60); // 60 seconds timer
   const [timerRunning, setTimerRunning] =useState(false);
   
-  const socket = io('http://localhost:5000');
+  const URL = 'http://localhost:5000/';
 
   useEffect(() => {
-    socket.connect();
-    socket.on('connect', () => {
-      console.log('Connected to server');
-      getWord();
-    });
-    return () => {
-      socket.off('connect');
-    }
+    getWord();
   }, []);
 
   useEffect(() => {
@@ -58,27 +51,25 @@ export default function App() {
   async function getWord() {
     
     setIsLoading(true);
-    socket.emit('get_word');
+    const response = await fetch(URL + 'get_word')
+    const data = await response.json()
 
-    socket.on('word_data', (response) => {
-      console.log('Game Status:', response);
-
-      if (response.data.definition !== null) {
-        setDefinition(response.data.definition);
-        setWord(response.data.word);
-        setGuess('');
-        setResult('');
-        setRemainingTime(60); 
-        setTimerRunning(true); 
-      } else {
-        setDefinition('');
-        setGuess('');
-        setResult("Trulé. Buscá de nuevo, porfis.");
-        socket.off('connect');
-        socket.off('word_data');
-      }
-      setIsLoading(false);
-    });
+    if (response.status === 200) {
+      console.log(data)
+    } 
+    if (data.definition !== null) {
+      setDefinition(data.definition);
+      setWord(data.word);
+      setGuess('');
+      setResult('');
+      setRemainingTime(60); 
+      setTimerRunning(true); 
+    } else {
+      setDefinition('');
+      setGuess('');
+      setResult("Trulé. Buscá de nuevo, porfis.");
+    }
+    setIsLoading(false);
   }
 
   function checkGuess() {
