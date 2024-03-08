@@ -90,6 +90,18 @@ h2 {
   margin-bottom: 10px;
 }
 
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .definition {
+    font-size: 2vw;
+  }
+}
 .definition {
   font-size: 1.6rem; 
   font-weight: bold;
@@ -97,8 +109,10 @@ h2 {
   width: 50vw;
 }
 
+
+
 .score {
-  font-size: 1.2rem;
+  font-size: 10vw;
   margin-bottom: 20px;
   align-items: start;
   justify-content: start;
@@ -110,6 +124,7 @@ input[type="text"] {
   padding: 10px;
   font-size: 1.4rem;
   font-weight: bold;
+  text-align: center;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 10px;

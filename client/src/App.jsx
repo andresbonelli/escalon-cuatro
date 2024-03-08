@@ -71,7 +71,7 @@ export default function App() {
       {isLoading ? (
         <Loader />
       ) : (
-        <>
+        <div className="game-container">
           <p className="definition">{definition}</p>
           <input
             name="guess"
@@ -83,7 +83,7 @@ export default function App() {
             onChange={(e) => setGuess(e.target.value)}
           />
           {timerRunning && (
-            <>
+            
               <div className="timer-container">
                 <div className="timer">
                   <Timer onComplete={handleTimerComplete} />
@@ -98,7 +98,7 @@ export default function App() {
                   </button>
                 </div>
               </div>
-            </>
+            
           )}
           <p className="result">{result}</p>
           {result && (
@@ -106,7 +106,7 @@ export default function App() {
               Próxima
             </button>
           )}
-        </>
+        </div>
       )}
     </div>
   );
