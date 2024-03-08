@@ -160,6 +160,31 @@ input[type="text"] {
   margin-top: 10px;
 }
 
+.timer-container {
+  position: relative; /* Ensure the container is a positioned parent */
+  width: 200px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.timer, .button-container  {
+  position: absolute;
+  bottom: 50%; /* Adjust the bottom spacing */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, 50%);
+  
+}
+
+/* .button-container {
+  position: absolute;
+  bottom: 50%; 
+  left: 50%; 
+  transform: translate(-50%, 50%);
+}
+ */
+
 /* timer bar */
 .timer-bar {
   height: 10px; 
