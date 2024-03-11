@@ -17,28 +17,35 @@ export default function App() {
   const URL = "http://localhost:5000/";
 
   // Fetch word and definition data when page loads for the first time.
+  // To do: refactor into SWR, or "use" hook since useEffect is called *after* the component has rendered,
+  // thus calling the fetch twice at first load.
   useEffect(() => {
     getWord();
   }, []);
 
   async function getWord() {
     setIsLoading(true);
-    const response = await fetch(URL + "get_word"); // Fetch data from backend (Flask app route)
-    const data = await response.json();
+    try {
+      const response = await fetch(URL + "get_word"); // Fetch data from backend (Flask app route)
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      } 
+      const data = await response.json();
 
-    if (response.status === 200) {
-      console.log(data);
-    }
-    if (data.definition !== null) {
-      setDefinition(data.definition);
-      setWord(data.word);
-      setGuess("");
-      setResult("");
-      setTimerRunning(true);
-    } else {
-      getWord();
-    }
-    setIsLoading(false);
+      if (data.definition !== null) {
+        setDefinition(data.definition);
+        setWord(data.word);
+        setGuess("");
+        setResult("");
+        setTimerRunning(true);
+      } else {
+        getWord();
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoading(false);
+    } 
   }
 
   function checkGuess() {

@@ -6,8 +6,9 @@ export default function Timer({onComplete}) {
         <CountdownCircleTimer
             isPlaying
             duration={60}
-            colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-            colorsTime={[60, 45, 30, 0]}
+            colors={["#004777", "#00C000", "#FFE733", "#FFAA1C", "#FF8C01", "#ED2938", "#A30000"]} 
+            colorsTime={[60, 50, 40, 30, 20, 10, 0]}
+            trailColor="BED61B"
             onComplete={onComplete}
         />
 
