@@ -8,7 +8,7 @@ def separate_sentences(text: str) -> object:
     sentences = re.findall(r'\d+\.\s*[fm]\.\s*(.*?)(?=\s*\d+\.\s*[fm]\.|$)', text)
     return sentences
 
-def extract_first_sentence(text: str) -> str:
+def extract_first_sentence(text: str, word: str) -> str:
     # regex to match the first sentence
     pattern = r'(?:\d+\. [a-z]+\.\s*)?(.*?)(?=\d+\. [a-z]+\.|$)'
 
@@ -20,6 +20,7 @@ def extract_first_sentence(text: str) -> str:
         sentence.strip() for sentence in sentences
         if not re.match(r'^Definición RAE de «[^»]+»', sentence)
         and "Entradas que contienen la forma «" not in sentence
+        and word not in sentence
     ]
 
     # Return the first non-empty sentence
@@ -43,8 +44,9 @@ class Game:
         response = requests.get("https://www.palabrasque.com/palabra-aleatoria.php?Submit=Nueva+palabra")
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            font_element = soup.find('font', {'data': 'palabra'})
 
+            # Extract text from <font data="palabra"> in HTML
+            font_element = soup.find('font', {'data': 'palabra'}) 
             pattern = re.compile(r'<font data="palabra" size="6" /><b>(.*?)<\/b><\/font>')
             match = pattern.search(response.text)
 
@@ -59,7 +61,7 @@ class Game:
 
         definition = dle.search_by_word(word)
 
-        self.data['definition'] = extract_first_sentence(definition._meta_description)
+        self.data['definition'] = extract_first_sentence(definition._meta_description, word)
         
         return self.data
 
