@@ -11,7 +11,7 @@ export default function Header() {
                 </a>
             </div>
             <p className='copyright'>&copy; {new Date().getFullYear()} 
-                <a href='https://github.com/donpipon' target="_blank"> donpipon</a>
+                <a href='https://github.com/andresbonelli' target="_blank"> Andrés Bonelli</a>
             </p>
         </header>
     );
