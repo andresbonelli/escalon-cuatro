@@ -1,10 +1,16 @@
+import os
+import logging
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from game import Game
-import logging
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)
+
+load_dotenv()
+
+app.config['DEBUG'] = os.environ.get('FLASK_DEBUG')
 
 logging.basicConfig(level=logging.INFO)
 
@@ -21,7 +27,7 @@ def get_word():
         return jsonify({"error": "An error occurred"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
     
     
