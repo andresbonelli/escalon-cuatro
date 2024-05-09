@@ -28,8 +28,8 @@ export default function App() {
     try {
       const response = await fetch(URL + "get_word"); // Fetch data from backend (Flask app route)
       if (!response.ok) {
-        throw new Error('Network response was not ok');
-      } 
+        throw new Error("Network response was not ok");
+      }
       const data = await response.json();
 
       if (data.definition !== null) {
@@ -42,10 +42,10 @@ export default function App() {
         getWord();
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
       setIsLoading(false);
-    } 
+    }
   }
 
   function checkGuess() {
@@ -90,22 +90,20 @@ export default function App() {
             onChange={(e) => setGuess(e.target.value)}
           />
           {timerRunning && (
-            
-              <div className="timer-container">
-                <div className="timer">
-                  <Timer onComplete={handleTimerComplete} />
-                </div>
-                <div className="button-container">
-                  <button
-                    className="btn-primary"
-                    onClick={checkGuess}
-                    disabled={!timerRunning}
-                  >
-                    Adivinar
-                  </button>
-                </div>
+            <div className="timer-container">
+              <div className="timer">
+                <Timer onComplete={handleTimerComplete} />
               </div>
-            
+              <div className="button-container">
+                <button
+                  className="btn-primary"
+                  onClick={checkGuess}
+                  disabled={!timerRunning}
+                >
+                  Adivinar
+                </button>
+              </div>
+            </div>
           )}
           <p className="result">{result}</p>
           {result && (

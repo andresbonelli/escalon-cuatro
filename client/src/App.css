@@ -1,6 +1,9 @@
 body {
-  background: rgb(190,214,27);
-  background: radial-gradient(rgba(190,214,27,1) 15%, rgba(0,94,0,1) 100%); 
+  background: rgb(190, 214, 27);
+  background: radial-gradient(
+    rgba(190, 214, 27, 1) 15%,
+    rgba(0, 94, 0, 1) 100%
+  );
   background-size: cover;
   background-attachment: fixed;
   font-family: Arial, Helvetica, sans-serif;
@@ -20,16 +23,15 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #181818; 
+  background-color: #181818;
   opacity: 90%;
-  padding: 7px; 
+  padding: 7px;
   box-shadow: 0px 0px 100px 50px rgb(0, 60, 0);
   display: flex;
   justify-content: space-between; /* To push the logo to the left */
-  align-items: center; 
-  z-index: 100; 
+  align-items: center;
+  z-index: 100;
 }
-
 
 .logo-container {
   max-width: 13rem;
@@ -37,20 +39,19 @@ body {
   text-align: center;
 }
 
-
 .logo {
   max-width: 13rem;
   display: block; /* Remove any unwanted spacing */
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    .logo-container {
-      max-width: 300px;
-    }
-    .logo {
-      max-width: 300px;
-    }
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .logo-container {
+    max-width: 300px;
   }
+  .logo {
+    max-width: 300px;
+  }
+}
 
 .copyright {
   color: rgb(0, 160, 0);
@@ -58,18 +59,23 @@ body {
   margin-right: 4rex;
 }
 
-A:link {text-decoration: none; color: rgb(0, 160, 0);}
-A:visited {text-decoration: none; color: rgb(0, 160, 0);}
-
+A:link {
+  text-decoration: none;
+  color: rgb(0, 160, 0);
+}
+A:visited {
+  text-decoration: none;
+  color: rgb(0, 160, 0);
+}
 
 @media (max-width: 768px) {
   /* Adjust styles for smaller screens, if necessary */
   .logo-container {
-      margin-left: 10px;
+    margin-left: 10px;
   }
 
   .logo {
-      max-width: 80px;
+    max-width: 80px;
   }
 }
 
@@ -84,9 +90,9 @@ A:visited {text-decoration: none; color: rgb(0, 160, 0);}
 }
 
 h2 {
-  font-size: 2rem; 
+  font-size: 2rem;
   font-weight: bold;
-  
+
   margin-bottom: 10px;
 }
 
@@ -103,19 +109,10 @@ h2 {
   }
 }
 .definition {
-  font-size: 1.6rem; 
+  font-size: 1.6rem;
   font-weight: bold;
   margin-bottom: 20px;
   width: 50vw;
-}
-
-
-
-.score {
-  font-size: 10vw;
-  margin-bottom: 20px;
-  align-items: start;
-  justify-content: start;
 }
 
 input[type="text"] {
@@ -146,7 +143,6 @@ input[type="text"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }
 
 .btn-primary:hover {
@@ -154,14 +150,16 @@ input[type="text"] {
 }
 
 .btn-primary:disabled {
-  background-color: #ccc; 
-  color: #999; 
-  cursor: not-allowed; 
+  background-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
 }
 .score {
-  font-size: 1.5rem;
+  font-size: 10vw;
   font-weight: bold;
   margin-bottom: 20px;
+  align-items: start;
+  justify-content: start;
 }
 .score-negative {
   color: #bf0000;
@@ -184,10 +182,10 @@ input[type="text"] {
   align-items: center; /* Center vertically */
 }
 
-.timer, .button-container  {
+.timer,
+.button-container {
   position: absolute;
   bottom: 50%; /* Adjust the bottom spacing */
   left: 50%; /* Center horizontally */
   transform: translate(-50%, 50%);
-  
 }
